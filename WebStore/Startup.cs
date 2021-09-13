@@ -29,11 +29,15 @@ namespace WebStore
 
             app.UseRouting();
 
+            //var greetings = "Hello from my first ASP.NET Core APp";
+            //var logging = Configuration["Logging:LogLevel:Default"];
+            //var greetings = Configuration["Greetings"];
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    //await context.Response.WriteAsync(greetings);
+                    await context.Response.WriteAsync(Configuration["Greetings"]);
                 });
             });
         }
