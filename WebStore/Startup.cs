@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.Infrastructure.Middleware;
 
 namespace WebStore
 {
@@ -33,18 +34,15 @@ namespace WebStore
 
             app.UseRouting();
 
-            //var greetings = "Hello from my first ASP.NET Core APp";
-            //var logging = Configuration["Logging:LogLevel:Default"];
-            //var greetings = Configuration["Greetings"];
+            app.UseMiddleware<TestMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/greetings", async context =>
                 {
-                    //await context.Response.WriteAsync(greetings);
                     await context.Response.WriteAsync(Configuration["Greetings"]);
                 });
 
-                //endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
