@@ -6,6 +6,8 @@ using WebStore.Models;
 
 namespace WebStore.Controllers
 {
+    //[Route("Employees/[action]/{id?}")]
+    //[Route("Staff/[action]/{id?}")]
     public class EmployeesController : Controller
     {
         private readonly IEnumerable<Employee> _Employees;
@@ -15,8 +17,10 @@ namespace WebStore.Controllers
             _Employees = TestData.Employees;
         }
 
+        //[Route("~/employees/all")]
         public IActionResult Index() => View(_Employees);
 
+        //[Route("~/employees/info-{id}")]
         public IActionResult Details(int id)
         {
             //var employee = _Employees.FirstOrDefault(e => e.Id == id);

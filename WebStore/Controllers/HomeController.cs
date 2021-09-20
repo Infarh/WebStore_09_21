@@ -7,6 +7,7 @@ namespace WebStore.Controllers
         public IActionResult Index() => View();
         
         public IActionResult About() => View();
+
         public IActionResult Catalog() => View();
     }
 }
