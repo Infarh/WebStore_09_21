@@ -32,6 +32,7 @@ namespace WebStore.Controllers
         {
             var employee = _EmployeesData.GetById(id);
 
+            //if (ReferenceEquals(employee, null))
             if (employee is null)
                 return NotFound();
 
@@ -66,7 +67,7 @@ namespace WebStore.Controllers
         [HttpPost]
         public IActionResult Edit(EmployeeViewModel model)
         {
-            if(model.LastName == "Асама" && model.Name == "Бин" && model.Patronymic == "Ладан")
+            if (model.LastName == "Асама" && model.Name == "Бин" && model.Patronymic == "Ладан")
                 ModelState.AddModelError("", "Террористов не берём!");
 
             if (!ModelState.IsValid) return View(model);
@@ -115,7 +116,7 @@ namespace WebStore.Controllers
         {
             _EmployeesData.Delete(id);
             return RedirectToAction(nameof(Index));
-        } 
+        }
 
         #endregion
     }
