@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
-using WebStore.Data;
 using WebStore.Models;
 using WebStore.Services.Interfaces;
 using WebStore.ViewModels;
@@ -32,6 +27,7 @@ namespace WebStore.Controllers
         {
             var employee = _EmployeesData.GetById(id);
 
+            //if (ReferenceEquals(employee, null))
             if (employee is null)
                 return NotFound();
 
@@ -66,6 +62,11 @@ namespace WebStore.Controllers
         [HttpPost]
         public IActionResult Edit(EmployeeViewModel model)
         {
+            if (model.LastName == "Асама" && model.Name == "Бин" && model.Patronymic == "Ладан")
+                ModelState.AddModelError("", "Террористов не берём!");
+
+            if (!ModelState.IsValid) return View(model);
+
             var employee = new Employee
             {
                 Id = model.Id,
@@ -110,7 +111,7 @@ namespace WebStore.Controllers
         {
             _EmployeesData.Delete(id);
             return RedirectToAction(nameof(Index));
-        } 
+        }
 
         #endregion
     }
