@@ -20,8 +20,4 @@
     <ProjectReference Include="..\WebStore.Domain\WebStore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\InSQL\" />
-  </ItemGroup>
-
 </Project>
