@@ -10,6 +10,7 @@ using WebStore.Data;
 using WebStore.Infrastructure.Conventions;
 using WebStore.Infrastructure.Middleware;
 using WebStore.Services;
+using WebStore.Services.InMemory;
 using WebStore.Services.Interfaces;
 
 namespace WebStore
