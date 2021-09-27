@@ -40,7 +40,7 @@ namespace WebStore
                 app.UseBrowserLink();
             }
 
-            //app.UseStatusCodePages();
+            app.UseStatusCodePagesWithRedirects("~/home/status/{0}");
 
             app.UseStaticFiles();
 
@@ -50,7 +50,6 @@ namespace WebStore
 
             app.UseWelcomePage("/welcome");
 
-            //app.UseStatusCodePagesWithReExecute("/Home/Status/{0}");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/greetings", async context =>
