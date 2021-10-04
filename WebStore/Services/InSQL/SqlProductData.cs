@@ -28,7 +28,7 @@ namespace WebStore.Services.InSQL
                .Include(p => p.Brand)
                .Include(p => p.Section);
 
-            if (Filter?.Ids.Length > 0)
+            if (Filter?.Ids?.Length > 0)
                 query = query.Where(product => Filter.Ids.Contains(product.Id));
             else
             {
