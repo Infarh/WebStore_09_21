@@ -1,17 +1,6 @@
 ﻿@using WebStore.Services.Interfaces
+@using WebStore.Infrastructure.Mapping
 @inject IProductData ProductData
-@{
-    var products = ProductData
-        .GetProducts()
-        .Take(6)
-        .Select(p => new ProductViewModel
-        {
-            Id = p.Id,
-            Name = p.Name,
-            Price = p.Price,
-            ImageUrl = p.ImageUrl,
-        });
-}
 
 <partial name="Partial/_Slider"/>
 
@@ -23,7 +12,7 @@
             </div>
 
             <div class="col-sm-9 padding-right">
-                <partial name="Partial/_Products" model="products"/>
+                <partial name="Partial/_Products" model="ProductData.GetProducts().Take(6).ToView()"/>
 
                 <partial name="Partial/_CategoryTab"/>
 

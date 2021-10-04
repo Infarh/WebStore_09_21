@@ -11,7 +11,11 @@ namespace WebStore.Services.InMemory
     {
         public IEnumerable<Section> GetSections() => TestData.Sections;
 
+        public Section GetSectionById(int Id) => TestData.Sections.FirstOrDefault(s => s.Id == Id);
+
         public IEnumerable<Brand> GetBrands() => TestData.Brands;
+
+        public Brand GetBrandById(int Id) => TestData.Brands.FirstOrDefault(b => b.Id == Id);
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
@@ -28,5 +32,7 @@ namespace WebStore.Services.InMemory
 
             return query;
         }
+
+        public Product GetProductById(int Id) => TestData.Products.FirstOrDefault(p => p.Id == Id);
     }
 }
