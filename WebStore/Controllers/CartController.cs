@@ -55,6 +55,7 @@ namespace WebStore.Controllers
 
         public IActionResult OrderConfirmed(int Id)
         {
+            ViewBag.OrderId = Id;
             return View();
         }
     }
