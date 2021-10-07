@@ -47,6 +47,10 @@ namespace WebStore
                         opt.UseSqlite(Configuration.GetConnectionString(database_type),
                             o => o.MigrationsAssembly("WebStore.DAL.Sqlite")));
                     break;
+
+                case "InMemory":
+                    services.AddDbContext<WebStoreDB>(opt => opt.UseInMemoryDatabase("WebStore.db"));
+                    break;
             }
 
             services.AddIdentity<User, Role>( /*opt => { opt. }*/)
