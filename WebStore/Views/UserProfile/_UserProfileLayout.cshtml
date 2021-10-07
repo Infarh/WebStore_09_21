@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout"; // не обязательно!
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <aside>
+                <partial name="Partial/_UserProfileMenu" />
+            </aside>
+        </div>
+        <div class="col-sm-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>

@@ -31,8 +31,27 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<WebStoreDB>(opt => 
-                opt.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+            var database_type = Configuration["Database"];
+
+            switch (database_type)
+            {
+                default: throw new InvalidOperationException($"Тип БД {database_type} не поддерживается");
+
+                case "SqlServer":
+                    services.AddDbContext<WebStoreDB>(opt => 
+                        opt.UseSqlServer(Configuration.GetConnectionString(database_type)));
+                    break;
+
+                case "Sqlite":
+                    services.AddDbContext<WebStoreDB>(opt => 
+                        opt.UseSqlite(Configuration.GetConnectionString(database_type),
+                            o => o.MigrationsAssembly("WebStore.DAL.Sqlite")));
+                    break;
+
+                case "InMemory":
+                    services.AddDbContext<WebStoreDB>(opt => opt.UseInMemoryDatabase("WebStore.db"));
+                    break;
+            }
 
             services.AddIdentity<User, Role>( /*opt => { opt. }*/)
                .AddEntityFrameworkStores<WebStoreDB>()
@@ -77,6 +96,7 @@ namespace WebStore
             //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<ICartService, InCookiesCartService>();
+            services.AddScoped<IOrderService, SqlOrderService>();
 
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
             //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
@@ -112,6 +132,11 @@ namespace WebStore
                 {
                     await context.Response.WriteAsync(Configuration["Greetings"]);
                 });
+
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
 
                 endpoints.MapControllerRoute(
                     "default",
