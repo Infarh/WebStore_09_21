@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebStore.ViewModels
+namespace WebStore.Domain.ViewModels
 {
     public class UserOrderViewModel
     {

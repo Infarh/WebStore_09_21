@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebStore.Domain.Entities.Identity;
-using WebStore.Models;
+using WebStore.Domain.Models;
+using WebStore.Domain.ViewModels;
 using WebStore.Services.Interfaces;
-using WebStore.ViewModels;
 
 namespace WebStore.Controllers
 {
