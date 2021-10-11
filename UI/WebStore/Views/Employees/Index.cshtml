@@ -1,0 +1,70 @@
+﻿@using WebStore.Domain.Entities.Identity
+@model IEnumerable<WebStore.Domain.Models.Employee>
+
+<div class="container">
+    <h3>Сотрудники</h3>
+    <hr />
+
+    @if (User.IsInRole(Role.Administrators))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-default">Создать 1</a>
+        </p>
+
+        <p>
+            <a asp-action="Edit" class="btn btn-default">Создать 2</a>
+        </p>
+    }
+
+    @if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Возраст</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr>
+                        <td>@employee.Id</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.Patronymic</td>
+                        <td>@employee.Age</td>
+                        <td>
+                            <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id">
+                                <i class="fa fa-info"></i>
+                            </a>
+                            
+                            @if (User.IsInRole(Role.Administrators))
+                            {
+                                @:|<a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id">edit</a>|
+                                <a asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.Id" class="text-danger">
+                                    del
+                                </a>
+                                <form asp-action="DeleteConfirmed" asp-route-id="@employee.Id">
+                                    <input type="submit" value="DD" class="btn btn-danger" />
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Сотрудников нет!</p>
+    }
+
+    <p>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-default">Домой</a>
+    </p>
+</div>
