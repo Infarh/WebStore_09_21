@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.DAL.Sqlite", "Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore", "UI\WebStore\WebStore.csproj", "{7CEFEA82-D814-4E48-AF97-027287842115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Interfaces", "Services\WebStore.Interfaces\WebStore.Interfaces.csproj", "{24940479-A5EE-471B-BDF8-211841A76AF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Interfaces", "Services\WebStore.Interfaces\WebStore.Interfaces.csproj", "{24940479-A5EE-471B-BDF8-211841A76AF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Services", "Services\WebStore.Services\WebStore.Services.csproj", "{401E55C7-AC36-4170-8182-FB8B76497DEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Services", "Services\WebStore.Services\WebStore.Services.csproj", "{401E55C7-AC36-4170-8182-FB8B76497DEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.WebAPI", "Services\WebStore.WebAPI\WebStore.WebAPI.csproj", "{2889C75C-1D6B-4D16-AD86-3DC8F53333D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{401E55C7-AC36-4170-8182-FB8B76497DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{401E55C7-AC36-4170-8182-FB8B76497DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{401E55C7-AC36-4170-8182-FB8B76497DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2889C75C-1D6B-4D16-AD86-3DC8F53333D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2889C75C-1D6B-4D16-AD86-3DC8F53333D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2889C75C-1D6B-4D16-AD86-3DC8F53333D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2889C75C-1D6B-4D16-AD86-3DC8F53333D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{7CEFEA82-D814-4E48-AF97-027287842115} = {0E96E131-78ED-4132-A695-94A6B5BBF1F6}
 		{24940479-A5EE-471B-BDF8-211841A76AF9} = {DADD5081-4FD1-4FCA-8D9D-5BC937461455}
 		{401E55C7-AC36-4170-8182-FB8B76497DEC} = {DADD5081-4FD1-4FCA-8D9D-5BC937461455}
+		{2889C75C-1D6B-4D16-AD86-3DC8F53333D8} = {DADD5081-4FD1-4FCA-8D9D-5BC937461455}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F678ED1A-FDDF-482F-A0B5-916509303047}
