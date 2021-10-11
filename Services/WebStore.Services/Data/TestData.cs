@@ -2,7 +2,7 @@
 using WebStore.Domain.Entities;
 using WebStore.Domain.Models;
 
-namespace WebStore.Data
+namespace WebStore.Services.Data
 {
     public static class TestData
     {
