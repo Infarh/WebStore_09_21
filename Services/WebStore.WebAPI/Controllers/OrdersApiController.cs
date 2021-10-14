@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebStore.Domain.DTO;
 using WebStore.Interfaces.Services;
 
 namespace WebStore.WebAPI.Controllers
@@ -21,7 +22,7 @@ namespace WebStore.WebAPI.Controllers
         public async Task<IActionResult> GetUserOrders(string UserName)
         {
             var orders = await _OrderService.GetUserOrders(UserName);
-            return Ok(orders);
+            return Ok(orders.ToDTO());
         }
 
         [HttpGet("{id}")]
@@ -30,14 +31,14 @@ namespace WebStore.WebAPI.Controllers
             var order = await _OrderService.GetOrderById(id);
             if (order is null)
                 return NotFound();
-            return Ok(order);
+            return Ok(order.ToDTO());
         }
 
         [HttpPost("{UserName}")]
-        public async Task<IActionResult> CreateOrder(string UserName)
+        public async Task<IActionResult> CreateOrder(string UserName, [FromBody] CreateOrderDTO OrderModel)
         {
-            var order = await _OrderService.CreateOrder(UserName,);
-            return Ok(order);
+            var order = await _OrderService.CreateOrder(UserName, OrderModel.Items.ToCartView(), OrderModel.Order);
+            return Ok(order.ToDTO());
         }
     }
 }
