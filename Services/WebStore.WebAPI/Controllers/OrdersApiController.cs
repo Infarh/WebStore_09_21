@@ -34,7 +34,7 @@ namespace WebStore.WebAPI.Controllers
             return Ok(order.ToDTO());
         }
 
-        [HttpPost("{UserName}")]
+        [HttpPost("{UserName}")] // POST -> http://localhost:5001/api/orders/Ivanov
         public async Task<IActionResult> CreateOrder(string UserName, [FromBody] CreateOrderDTO OrderModel)
         {
             var order = await _OrderService.CreateOrder(UserName, OrderModel.Items.ToCartView(), OrderModel.Order);
