@@ -14,6 +14,8 @@ namespace WebStore.Domain.DTO
 
         public decimal Price { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public BrandDTO Brand { get; set; }
 
         public SectionDTO Section { get; set; }
@@ -94,6 +96,7 @@ namespace WebStore.Domain.DTO
                 Name = product.Name,
                 Order = product.Order,
                 Price = product.Price,
+                ImageUrl = product.ImageUrl,
                 Brand = product.Brand.ToDTO(),
                 Section = product.Section.ToDTO(),
             };
@@ -106,6 +109,7 @@ namespace WebStore.Domain.DTO
                 Name = product.Name,
                 Order = product.Order,
                 Price = product.Price,
+                ImageUrl = product.ImageUrl,
                 BrandId = product.Brand?.Id,
                 Brand = product.Brand.FromDTO(),
                 SectionId = product.Section.Id,
