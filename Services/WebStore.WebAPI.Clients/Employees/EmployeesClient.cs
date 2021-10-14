@@ -27,7 +27,9 @@ namespace WebStore.WebAPI.Clients.Employees
         public int Add(Employee employee)
         {
             var response = Post(Address, employee);
-            var added_employee = response.Content.ReadFromJsonAsync<Employee>();
+            var added_employee = response.Content.ReadFromJsonAsync<Employee>().Result;
+            if (added_employee is null)
+                return -1;
             var id = added_employee.Id;
             return id;
         }
