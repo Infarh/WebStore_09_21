@@ -48,12 +48,15 @@ namespace WebStore.WebAPI.Controllers
             return Ok(products.ToDTO());
         }
 
+        //private record ProductDto(int Id, string Name);
+
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var product = _ProductData.GetProductById(id);
             if (product is null)
                 return NotFound();
+            //return Ok(new ProductDto(product.Id, product.Name));
             return Ok(product.ToDTO());
         }
     }
