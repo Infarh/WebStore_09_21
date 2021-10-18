@@ -26,9 +26,10 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentity<User, Role>()
+               .AddIdentityWebStoreWebAPIClients()
                .AddDefaultTokenProviders();
 
-            services.AddIdentityWebStoreWebAPIClients();
+            //services.AddIdentityWebStoreWebAPIClients();
             //services.AddHttpClient("WebStoreWebAPIIdentity", client => client.BaseAddress = new(Configuration["WebAPI"]))
             //   .AddTypedClient<IUserStore<User>, UsersClient>()
             //   .AddTypedClient<IUserRoleStore<User>, UsersClient>()
