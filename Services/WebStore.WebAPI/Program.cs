@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.Services.Data;
 
 namespace WebStore.WebAPI
 {
@@ -9,6 +11,13 @@ namespace WebStore.WebAPI
         public static async Task  Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var initializer = scope.ServiceProvider.GetRequiredService<WebStoreDbInitializer>();
+                await initializer.InitializeAsync();
+            }
+
             await host.RunAsync();
         }
 
