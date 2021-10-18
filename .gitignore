@@ -368,3 +368,5 @@ FodyWeavers.xsd
 **/wwwroot/js/site.min.js
 **/wwwroot/js/site.js
 WebStore.db
+/Services/WebStore.WebAPI/WebStore.WebAPI.xml
+/Common/WebStore.Domain/WebStore.Domain.xml
