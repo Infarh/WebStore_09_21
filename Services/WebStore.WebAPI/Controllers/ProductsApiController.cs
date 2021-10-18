@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain;
 using WebStore.Domain.DTO;
+using WebStore.Interfaces;
 using WebStore.Interfaces.Services;
 
 namespace WebStore.WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/products")]
+    [Route(WebAPIAddresses.Products)]
     public class ProductsApiController : ControllerBase
     {
         private readonly IProductData _ProductData;
@@ -48,12 +49,15 @@ namespace WebStore.WebAPI.Controllers
             return Ok(products.ToDTO());
         }
 
+        //private record ProductDto(int Id, string Name);
+
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var product = _ProductData.GetProductById(id);
             if (product is null)
                 return NotFound();
+            //return Ok(new ProductDto(product.Id, product.Name));
             return Ok(product.ToDTO());
         }
     }
