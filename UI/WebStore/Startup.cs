@@ -17,8 +17,6 @@ using WebStore.Interfaces.Services;
 using WebStore.Interfaces.TestAPI;
 using WebStore.Services.Data;
 using WebStore.Services.Services.InCookies;
-using WebStore.Services.Services.InMemory;
-using WebStore.Services.Services.InSQL;
 using WebStore.WebAPI.Clients.Employees;
 using WebStore.WebAPI.Clients.Orders;
 using WebStore.WebAPI.Clients.Products;
@@ -26,15 +24,8 @@ using WebStore.WebAPI.Clients.Values;
 
 namespace WebStore
 {
-    public class Startup
+    public record Startup(IConfiguration Configuration)
     {
-        public IConfiguration Configuration { get; set; }
-
-        public Startup(IConfiguration Configuration)
-        {
-            this.Configuration = Configuration;
-        }
-
         public void ConfigureServices(IServiceCollection services)
         {
             var database_type = Configuration["Database"];
@@ -59,7 +50,7 @@ namespace WebStore
                     break;
             }
 
-            services.AddIdentity<User, Role>( /*opt => { opt. }*/)
+            services.AddIdentity<User, Role>()
                .AddEntityFrameworkStores<WebStoreDB>()
                .AddDefaultTokenProviders();
 
