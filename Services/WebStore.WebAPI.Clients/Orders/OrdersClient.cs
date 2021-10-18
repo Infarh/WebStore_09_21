@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using WebStore.Domain.DTO;
 using WebStore.Domain.Entities.Orders;
 using WebStore.Domain.ViewModels;
+using WebStore.Interfaces;
 using WebStore.Interfaces.Services;
 using WebStore.WebAPI.Clients.Base;
 
@@ -12,7 +13,7 @@ namespace WebStore.WebAPI.Clients.Orders
 {
     public class OrdersClient : BaseClient, IOrderService
     {
-        public OrdersClient(HttpClient Client) : base(Client, "api/orders") { }
+        public OrdersClient(HttpClient Client) : base(Client, WebAPIAddresses.Orders) { }
         public async Task<IEnumerable<Order>> GetUserOrders(string UserName)
         {
             var orders = await GetAsync<IEnumerable<OrderDTO>>($"{Address}/user/{UserName}").ConfigureAwait(false);

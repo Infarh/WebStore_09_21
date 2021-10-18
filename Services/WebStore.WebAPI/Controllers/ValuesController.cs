@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using WebStore.Interfaces;
 
 namespace WebStore.WebAPI.Controllers
 {
-    [Route("api/[controller]")] // api/values
-    [ApiController]
+    [ApiController] // api/values
+    [Route(WebAPIAddresses.Values)]
     public class ValuesController : ControllerBase
     {
         private readonly Dictionary<int, string> _Values = Enumerable.Range(1, 10)
