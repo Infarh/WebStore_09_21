@@ -112,6 +112,8 @@ namespace WebStore
 
             app.UseWelcomePage("/welcome");
 
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/greetings", async context =>
