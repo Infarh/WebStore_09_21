@@ -26,6 +26,8 @@
         //{
         //    return e1.Id != e2.Id;
         //}
+
+        public override string ToString() => $"[{Id}]{LastName} {FirstName} {Patronymic} ({Age})";
     }
 
     //public record Employee2(int Id, string LastName, string FirstName, string Patronymic, int Age);
