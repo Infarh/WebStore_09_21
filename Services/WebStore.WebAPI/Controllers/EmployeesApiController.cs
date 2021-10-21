@@ -30,7 +30,7 @@ namespace WebStore.WebAPI.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Employee))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetById(int id)
+        public ActionResult<Employee> GetById(int id)
         {
             var employee = _EmployeesData.GetById(id);
             if (employee is null)
