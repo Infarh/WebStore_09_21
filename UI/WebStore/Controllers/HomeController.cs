@@ -19,7 +19,7 @@ namespace WebStore.Controllers
 
             switch (id)
             {
-                default: return Content($"Status --- {id}");
+                default: return Content($"Status ---{id}");
                 case "404": return View("Error404");
             }
         }
