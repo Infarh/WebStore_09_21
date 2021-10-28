@@ -7,8 +7,10 @@
 <section>
     <div class="container">
         <div class="row">
+            <vc:bread-crumbs />
+
             <div class="col-sm-3">
-                <partial name="Partial/_LeftSideBar"/>
+                <partial name="Partial/_LeftSideBar" />
             </div>
 
             <div class="col-sm-9 padding-right">
@@ -63,7 +65,7 @@
                                 <label>Количество:</label>
                                 <input type="text" value="3" />
                                 <a class="btn btn-default cart"
-                                   asp-controller="Cart" asp-action="Add" asp-route-Id="@Model.Id" >
+                                   asp-controller="Cart" asp-action="Add" asp-route-Id="@Model.Id">
                                     <i class="fa fa-shopping-cart"></i>
                                     В корзину
                                 </a>
@@ -77,9 +79,9 @@
                     </div>
                 </div><!--/product-details-->
 
-                <partial name="Partial/_CategoryTab"/>
+                <partial name="Partial/_CategoryTab" />
 
-                <partial name="Partial/_RecomendedItems"/>
+                <partial name="Partial/_RecomendedItems" />
             </div>
         </div>
     </div>

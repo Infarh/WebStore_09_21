@@ -13,7 +13,11 @@
                         <img src="~/images/shop/@product.ImageUrl" alt="@product.Name" />
                         <h2>@product.Price.ToString("C")</h2>
                         <p>
-                            <a asp-controller="Catalog" asp-action="Details" asp-route-Id="@product.Id">
+                            <a asp-controller="Catalog" 
+                               asp-action="Details"
+                               asp-route-Id="@product.Id"
+                               asp-route-BrandId="@Context.Request.Query["BrandId"]"
+                               asp-route-SectionId="@Context.Request.Query["SectionId"]">
                                 @product.Name
                             </a>
                         </p>
@@ -26,7 +30,11 @@
                         <div class="overlay-content">
                             <h2>@product.Price.ToString("C")</h2>
                             <p>
-                                <a asp-controller="Catalog" asp-action="Details" asp-route-Id="@product.Id">
+                                <a asp-controller="Catalog" 
+                                   asp-action="Details"
+                                   asp-route-Id="@product.Id"
+                                   asp-route-BrandId="@Context.Request.Query["BrandId"]"
+                                   asp-route-SectionId="@Context.Request.Query["SectionId"]">
                                     @product.Name
                                 </a>
                             </p>
