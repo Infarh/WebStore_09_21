@@ -76,7 +76,7 @@ namespace WebStore.Services.Services
                 Ids = _CartStore.Cart.Items.Select(item => item.ProductId).ToArray()
             });
 
-            var products_views = products.ToView().ToDictionary(p => p.Id);
+            var products_views = products.Products.ToView().ToDictionary(p => p.Id);
 
             return new CartViewModel
             {
