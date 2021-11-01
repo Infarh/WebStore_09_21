@@ -64,8 +64,9 @@
                                 <span>@Model.Price.ToString("C")</span>
                                 <label>Количество:</label>
                                 <input type="text" value="3" />
-                                <a class="btn btn-default cart"
-                                   asp-controller="Cart" asp-action="Add" asp-route-Id="@Model.Id">
+                                <a class="btn btn-default add-to-cart"
+                                   asp-controller="Cart" asp-action="Add" asp-route-Id="@Model.Id"
+                                   data-id="@Model.Id">
                                     <i class="fa fa-shopping-cart"></i>
                                     В корзину
                                 </a>

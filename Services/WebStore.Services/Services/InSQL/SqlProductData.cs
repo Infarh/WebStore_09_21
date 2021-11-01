@@ -22,7 +22,7 @@ namespace WebStore.Services.Services.InSQL
 
         public Brand GetBrandById(int Id) => _db.Brands.Find(Id);
 
-        public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
+        public ProductsPage GetProducts(ProductFilter Filter = null)
         {
             IQueryable<Product> query = _db.Products
                .Include(p => p.Brand)
@@ -39,7 +39,14 @@ namespace WebStore.Services.Services.InSQL
                     query = query.Where(p => p.BrandId == brand_id);
             }
 
-            return query;
+            var total_count = query.Count();
+
+            if (Filter is { PageSize: > 0 and var page_size, Page: > 0 and var page_number })
+                query = query
+                   .Skip((page_number - 1) * page_size)
+                   .Take(page_size);
+
+            return new(query.AsEnumerable(), total_count);
         }
 
         public Product GetProductById(int Id) => _db.Products
