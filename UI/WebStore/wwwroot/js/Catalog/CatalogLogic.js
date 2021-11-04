@@ -19,7 +19,7 @@
 
             const container = $("#catalog-items-container");
 
-            container.LoadingOverlay();
+            container.LoadingOverlay("show");
 
             let query = "";
 

@@ -56,7 +56,7 @@ namespace WebStore.TagHelpers
 
             PageUrlValues["page"] = PageNumber;
 
-            foreach (var (key, value) in PageUrlValues.Select(v => (v.Key, Value: v.Value.ToString())).Where(v => v.Value?.Length > 0))
+            foreach (var (key, value) in PageUrlValues.Select(v => (v.Key, Value: v.Value?.ToString())).Where(v => v.Value?.Length > 0))
                 //if(value.ToString() is { Length: > 0 } str_value)
                 a.MergeAttribute($"data-{key}", value);
 
