@@ -8,7 +8,11 @@
         <div class="col-md-4">
             <h4>Рендринг на стороне сервера</h4>
             
-            <a class="btn btn-default">
+            <a class="btn btn-default"
+               data-ajax="true"
+               data-ajax-url="@Url.Action("GetHTML", "AjaxTest", new { id = 42, msg = "Hello HTML!", Delay = "5000" })"
+               data-ajax-update="#panel-server"
+               data-ajax-loading="#spinner-server">
                 Загрузка
             </a>
             
@@ -46,3 +50,12 @@
 
     </div>
 </div>
+
+@section Styles
+{
+    <style>
+        .row {
+            margin-bottom: 10px;
+        }
+    </style>
+}
