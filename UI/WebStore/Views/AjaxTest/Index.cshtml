@@ -26,7 +26,11 @@
         <div class="col-md-4">
             <h4>Рендринг на стороне клиента</h4>
 
-            <a class="btn btn-default">
+            <a class="btn btn-default"
+               data-ajax="true"
+               data-ajax-url="@Url.Action("GetJSON", "AjaxTest", new { id = 13, msg = "Hello JSON!", Delay = "2000" })"
+               data-ajax-loading="#spinner-client"
+               data-ajax-success="OnJSONLoaded">
                 Загрузка
             </a>
 
@@ -41,9 +45,7 @@
         <div class="col-md-4">
             <h4>Рендринг руками</h4>
 
-            <a class="btn btn-default">
-                Загрузка
-            </a>
+            <a class="btn btn-default" id="load-data-button">Загрузка</a>
 
             <div id="panel-js"></div>
         </div>
@@ -58,4 +60,34 @@
             margin-bottom: 10px;
         }
     </style>
+}
+
+@section Scripts
+{
+    <script>
+        OnJSONLoaded = data => {
+            const panel = $("#panel-client");
+            panel.empty();
+            panel.append("msg:" + data.message);
+            panel.append("<br/>");
+            panel.append("Server time:" + data.serverTime);
+        }
+
+        $("#load-data-button").click(e => {
+            e.preventDefault();
+
+            console.log("Starting AJAX-request to server");
+
+            $.get("@Url.Action("GetJSON")", { id: 321, msg: "QWE", Delay: "1000" })
+                .done(data => {
+                    console.log("Response from server");
+
+                    const panel = $("#panel-js");
+                    panel.empty();
+                    panel.append("msg:" + data.message);
+                    panel.append("<br/>");
+                    panel.append("Server time:" + data.serverTime);
+                });
+        });
+    </script>
 }
