@@ -1,5 +1,5 @@
 ﻿@*@using Microsoft.Extensions.Logging
-@using WebStore.Controllers*@
+    @using WebStore.Controllers*@
 @model WebStore.Domain.ViewModels.Identity.LoginViewModel
 @*@inject ILogger<AccountController> Logger*@
 @{
@@ -35,3 +35,8 @@
         </div>
     </div>
 </section><!--/form-->
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
