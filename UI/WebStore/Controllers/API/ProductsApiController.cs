@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Interfaces.Services;
 
@@ -23,8 +24,10 @@ namespace WebStore.Controllers.API
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
+            await Task.Delay(3500);
+
             var products = _ProductData.GetProducts();
 
             var infos = products.Products.Select(p => new ProductInfo
