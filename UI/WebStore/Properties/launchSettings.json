@@ -18,7 +18,6 @@
     "WebStore": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "WebAPI",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
