@@ -1,0 +1,36 @@
+﻿@page "/"
+@using WebStore.BlazorUI.Models
+@inject HttpClient Http;
+
+<Slider />
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <LeftSideBar />
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <ProductsView Products="_Products"/>
+
+                <CategoryTab/>
+
+                <RecomendedItems/>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@code
+{
+    private ProductInfo[] _Products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _Products = await Http.GetFromJsonAsync<ProductInfo[]>("api/products");
+
+        Console.WriteLine("Получены данные от сервера в количестве {0}", _Products?.Length ?? -1);
+    }
+}

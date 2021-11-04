@@ -1,0 +1,25 @@
+﻿@using WebStore.BlazorUI.Models
+<div class="features_items">
+    <!--features_items-->
+    <h2 class="title text-center">Товары</h2>
+    
+    @if (Products is { Length: > 0 } products)
+    {
+        foreach (var product in products)
+        {
+            <ProductView Product="product"/>
+        }
+    }
+    else
+    {
+        <p>Отсутствуют</p>
+    }
+
+
+</div><!--features_items-->
+
+@code
+{
+    [Parameter]
+    public ProductInfo[] Products { get; set; }
+}
